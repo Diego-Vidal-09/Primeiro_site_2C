@@ -1,183 +1,385 @@
-/* Reset */
+/* ========================= */
+/* RESET */
+/* ========================= */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da página */
+html{
+    scroll-behavior: smooth;
+}
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #2563eb 0%, transparent 40%),
+        radial-gradient(circle at bottom right, #7c3aed 0%, transparent 40%),
+        linear-gradient(135deg, #020617, #0f172a, #1e293b);
+    color: white;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
 }
 
-/* Cabeçalho */
+/* ========================= */
+/* HEADER */
+/* ========================= */
+
 header{
-    background-color: rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
 }
 
-/* Menu */
 nav{
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    gap: 30px;
+    gap: 35px;
 }
 
 nav a{
     text-decoration: none;
-    color: white;
+    color: #cbd5e1;
     font-size: 18px;
-    font-weight: bold;
-    padding: 10px 20px;
+    font-weight: 600;
+    padding: 12px 22px;
+    border-radius: 12px;
+    transition: all .35s ease;
+    position: relative;
+}
+
+nav a::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg,#38bdf8,#8b5cf6);
+    transition: .4s;
+    transform: translateX(-50%);
     border-radius: 10px;
-    transition: 0.3s;
 }
 
 nav a:hover{
-    background-color: #38bdf8;
-    color: #0f172a;
+    color: white;
+    background: rgba(255,255,255,.08);
     transform: translateY(-3px);
 }
 
-/* Conteúdo principal */
+nav a:hover::after{
+    width: 80%;
+}
+
+/* ========================= */
+/* MAIN */
+/* ========================= */
+
 main{
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-}
-
-/* Caixa principal */
-article{
-    background-color: rgba(255,255,255,0.08);
-    backdrop-filter: blur(12px);
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    text-align: center;
+    max-width: 1300px;
     width: 100%;
-    max-width: 800px;
+    margin: auto;
+    padding: 60px 20px;
 }
 
-/* Títulos */
+/* ========================= */
+/* TITULOS */
+/* ========================= */
+
 h1{
-    font-size: 42px;
-    margin-bottom: 30px;
     text-align: center;
-    color: #38bdf8;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+    font-size: 4rem;
+    margin-bottom: 40px;
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #60a5fa,
+        #8b5cf6,
+        #ec4899
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: brilho 8s linear infinite;
+    background-size: 300%;
+}
+
+@keyframes brilho{
+    0%{
+        background-position: 0%;
+    }
+
+    100%{
+        background-position: 300%;
+    }
 }
 
 h2{
+    color: #93c5fd;
     margin-bottom: 20px;
-    color: #7dd3fc;
+    font-size: 2rem;
 }
 
-/* Textos */
-p, section{
+/* ========================= */
+/* CARD PRINCIPAL */
+/* ========================= */
+
+article{
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    backdrop-filter: blur(20px);
+
+    border-radius: 30px;
+    padding: 50px;
+
+    max-width: 950px;
+    margin: auto;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.4),
+        inset 0 1px 0 rgba(255,255,255,.1);
+
+    transition: .4s;
+}
+
+article:hover{
+    transform: translateY(-8px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.55),
+        0 0 40px rgba(59,130,246,.15);
+}
+
+/* ========================= */
+/* INPUTS */
+/* ========================= */
+
+label{
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 10px;
     font-size: 18px;
-    line-height: 1.6;
+    font-weight: 600;
+    color: #cbd5e1;
 }
 
-/* Inputs */
 input{
     width: 100%;
-    max-width: 350px;
-    padding: 12px;
-    margin: 10px 0 20px 0;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    font-size: 16px;
-    text-align: center;
-}
+    padding: 16px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,.15);
 
-/* Labels */
-label{
-    font-weight: bold;
-    display: block;
-    margin-top: 15px;
-}
-
-/* Botões */
-button{
-    background: linear-gradient(135deg, #38bdf8, #0284c7);
+    background: rgba(255,255,255,.08);
     color: white;
+
+    font-size: 17px;
+
+    outline: none;
+
+    transition: .3s;
+}
+
+input::placeholder{
+    color: #94a3b8;
+}
+
+input:focus{
+    border-color: #38bdf8;
+
+    box-shadow:
+        0 0 0 5px rgba(56,189,248,.15),
+        0 0 20px rgba(56,189,248,.35);
+
+    transform: scale(1.01);
+}
+
+/* ========================= */
+/* BOTÕES */
+/* ========================= */
+
+button{
+    margin-top: 30px;
+
+    padding: 16px 35px;
+
     border: none;
-    padding: 12px 30px;
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed,
+            #db2777
+        );
+
+    background-size: 250%;
+
+    color: white;
     font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
     font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .4s;
 }
 
 button:hover{
-    transform: scale(1.05);
-    box-shadow: 0 5px 20px rgba(56,189,248,0.5);
+    transform:
+        translateY(-5px)
+        scale(1.05);
+
+    background-position: right center;
+
+    box-shadow:
+        0 15px 35px rgba(124,58,237,.5);
 }
 
-/* Resultado */
+button:active{
+    transform: scale(.97);
+}
+
+/* ========================= */
+/* RESULTADO */
+/* ========================= */
+
 #resposta{
-    margin-top: 20px;
-    font-size: 24px;
+    margin-top: 30px;
+    font-size: 2rem;
+    text-align: center;
     font-weight: bold;
-    color: #22c55e;
+    color: #4ade80;
+
+    text-shadow:
+        0 0 15px rgba(74,222,128,.7);
 }
 
-/* Mapa e vídeo */
+/* ========================= */
+/* MAPA E VÍDEO */
+/* ========================= */
+
 .mapa2,
 .musica{
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 iframe{
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-    max-width: 100%;
+    width: 100%;
+    max-width: 900px;
+
+    border: none;
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.5);
+
+    transition: .4s;
 }
 
-/* Rodapé */
+iframe:hover{
+    transform: scale(1.02);
+}
+
+/* ========================= */
+/* FOOTER */
+/* ========================= */
+
 footer{
-    background-color: rgba(0,0,0,0.3);
-    text-align: center;
-    padding: 20px;
     margin-top: auto;
+    padding: 25px;
+    text-align: center;
+
+    background: rgba(15,23,42,.6);
+
+    backdrop-filter: blur(15px);
+
+    border-top: 1px solid rgba(255,255,255,.08);
 }
 
 footer small{
-    color: #cbd5e1;
+    color: #94a3b8;
+    font-size: 15px;
 }
 
-/* Responsividade */
-@media(max-width: 768px){
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(
+        #2563eb,
+        #7c3aed
+    );
+
+    border-radius: 20px;
+}
+
+/* ========================= */
+/* RESPONSIVIDADE */
+/* ========================= */
+
+@media (max-width: 900px){
+
+    h1{
+        font-size: 2.8rem;
+    }
+
+    article{
+        padding: 30px;
+    }
+
+    nav{
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px){
+
+    h1{
+        font-size: 2.2rem;
+    }
 
     nav{
         flex-direction: column;
         align-items: center;
-        gap: 15px;
     }
 
-    h1{
-        font-size: 30px;
+    nav a{
+        width: 100%;
+        text-align: center;
     }
 
     article{
         padding: 25px;
     }
 
-    iframe{
+    button{
         width: 100%;
-        height: 250px;
     }
 }
