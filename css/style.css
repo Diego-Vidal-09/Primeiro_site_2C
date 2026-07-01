@@ -17,8 +17,9 @@ input,button{
     background-color:black;
     color: white;
     padding: 4px;
+    border-radius: 12px;
 }
 button{
     border-radius: 0.5rem;
-    
+
 }
