@@ -18,3 +18,7 @@ input,button{
     color: white;
     padding: 4px;
 }
+button{
+    border-radius: 0.5rem;
+    
+}
